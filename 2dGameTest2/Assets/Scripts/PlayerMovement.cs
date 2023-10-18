@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
+
     private Rigidbody2D body;
     private Animator anim;
+
     private bool grounded;
 
     private void Awake()
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = Vector3.one;
         else if (horizontalInput < -0.01f)
             transform.localScale = new Vector3(-1, 1, 1);
+        
         //Jump
         if (Input.GetKey(KeyCode.Space) && grounded)
             Jump();
@@ -33,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         //Set Animator Parameters
         anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("grounded", grounded);
+
     }
 
     private void Jump()
